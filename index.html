@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('wp3941114-ms-dhoni-hd-wallpapers.jpg'); /* Replace with your background image */
+            background-size: cover;
+            color: #333;
+        }
+
+        h1 {
+            color: #fff;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        label {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        #inputString {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #calculateButton {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        img {
+            max-width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+    <title>Thala App</title>
+</head>
+<body>
+    <h1>Thala App</h1>
+    <label for="inputString">Enter your name or birth year:</label>
+    <input type="text" id="inputString">
+    <button id="calculateButton" onclick="calculateTotal()">Calculate</button>
+    <div id="output"></div>
+
+    <script>
+        function calculateTotal() {
+            const inputString = document.getElementById('inputString').value;
+            let total;
+
+            if (/^\d+$/.test(inputString)) {
+                total = inputString.split('').reduce((acc, digit) => acc + parseInt(digit), 0);
+            } else {
+                total = inputString.length;
+            }
+
+            document.getElementById('output').innerText = `Total: ${total}`;
+
+            if (total === 7) {
+                document.getElementById('output').innerText = 'Thala for a reason!';
+                playMusic();
+                showPicture();
+            }
+        }
+
+        function playMusic() {
+            const audio = new Audio('thala.mp3');
+            audio.play();
+        }
+
+        function showPicture() {
+            const image = document.createElement('img');
+            image.src = 'feature-images-41131223045513.jpg';
+            image.alt = 'Thala Image';
+            document.body.appendChild(image);
+        }
+    </script>
+</body>
+</html>
